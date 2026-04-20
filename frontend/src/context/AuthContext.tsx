@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 import { authApi } from "../services/api";
 
 interface User {
@@ -45,7 +51,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signOut = async () => {
-    try { await authApi.signOut(); } catch { /* ignore */ }
+    try {
+      await authApi.signOut();
+    } catch {
+      /* ignore */
+    }
     localStorage.clear();
     setUser(null);
   };

@@ -17,8 +17,14 @@ export default function SignUp() {
     e.preventDefault();
     setError("");
 
-    if (password !== confirm) { setError("Passwords do not match"); return; }
-    if (password.length < 6) { setError("Password must be at least 6 characters"); return; }
+    if (password !== confirm) {
+      setError("Passwords do not match");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
 
     setLoading(true);
     try {
@@ -26,9 +32,11 @@ export default function SignUp() {
       navigate("/dashboard");
     } catch (err: any) {
       const msg = err.response?.data?.message;
-      setError(msg === "Email already in use"
-        ? "This email is already registered. Try signing in."
-        : msg || "Sign up failed. Please try again.");
+      setError(
+        msg === "Email already in use"
+          ? "This email is already registered. Try signing in."
+          : msg || "Sign up failed. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -43,7 +51,9 @@ export default function SignUp() {
 
         <form onSubmit={handleSubmit}>
           <div style={styles.field}>
-            <label style={styles.label}>Name <span style={styles.optional}>(optional)</span></label>
+            <label style={styles.label}>
+              Name <span style={styles.optional}>(optional)</span>
+            </label>
             <input
               type="text"
               value={name}

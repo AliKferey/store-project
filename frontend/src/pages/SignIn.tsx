@@ -19,7 +19,9 @@ export default function SignIn() {
       await signIn(email, password);
       navigate("/dashboard");
     } catch (err: any) {
-      setError(err.response?.data?.message || "Sign in failed. Please try again.");
+      setError(
+        err.response?.data?.message || "Sign in failed. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
